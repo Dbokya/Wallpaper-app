@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "127012041161",
+    "project_id": "wallpaper-app-tutorial-8e383",
+    "storage_bucket": "wallpaper-app-tutorial-8e383.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:127012041161:android:2982606b2f4ef802cdf818",
+        "android_client_info": {
+          "package_name": "com.example.wallpaper_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "127012041161-ggpfm6d32g9e3acvki6qb9fadgotu76v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBNWudVnEGYzrEs1LlRowfumDjqFAmpvMQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "127012041161-ggpfm6d32g9e3acvki6qb9fadgotu76v.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "127012041161-h4o1renhrhaltofpmn312kl13ah11kdo.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.wallpaperApp.RunnerTests"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

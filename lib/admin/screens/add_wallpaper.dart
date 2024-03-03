@@ -1,0 +1,205 @@
+import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
+import 'package:wallpaper_app/admin/provider/admin_provider.dart';
+import 'package:wallpaper_app/configs/extensions.dart';
+import 'package:wallpaper_app/shared/utils/pick_image.dart';
+import 'package:wallpaper_app/styles/color.dart';
+
+class AddWallpaperScreen extends StatefulWidget {
+  const AddWallpaperScreen({super.key});
+
+  @override
+  State<AddWallpaperScreen> createState() => _AddWallpaperScreenState();
+}
+
+class _AddWallpaperScreenState extends State<AddWallpaperScreen> {
+  @override
+  Widget build(BuildContext context) {
+    return Consumer<AdminProvider>(builder: (context, state, child) {
+      return Scaffold(
+        appBar: AppBar(
+          centerTitle: false,
+          title: const Text(
+            "Add Wallpaper",
+            style: TextStyle(color: white, fontWeight: FontWeight.bold),
+          ),
+        ),
+        body: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Column(
+            children: [
+              Expanded(
+                child: ListView(
+                  // crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    //category name
+                    const Text(
+                      "Category Name",
+                      style: TextStyle(color: white, fontSize: 18),
+                    ),
+                    10.height(),
+
+                    GestureDetector(
+                      onTap: () async {
+                        final result = await context.push('/category', extra: {'is_admin': true});
+                        if (result != null) {
+                          state.selectedCategory = result.toString();
+                        }
+                      },
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(horizontal: 20),
+                        height: 30,
+                        alignment: Alignment.centerLeft,
+                        decoration: BoxDecoration(
+                            border: Border.all(color: white), borderRadius: BorderRadius.circular(10)),
+                        child: Text(
+                          state.selectedCategory,
+                          style: const TextStyle(color: white),
+                        ),
+                      ),
+                    ),
+
+                    20.height(),
+
+                    //category image and image preview
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Expanded(
+                          child: Column(
+                            children: [
+                              const Text(
+                                "Wallpaper Image",
+                                style: TextStyle(color: white, fontSize: 18),
+                              ),
+                              10.height(),
+                              GestureDetector(
+                                onTap: () {},
+                                child: Container(
+                                  height: 300,
+                                  alignment: Alignment.center,
+                                  decoration: BoxDecoration(
+                                      border: Border.all(color: white),
+                                      borderRadius: BorderRadius.circular(15)),
+                                  child: IconButton(
+                                    onPressed: () async {
+                                      final image = await getImagePathFromSource();
+
+                                      state.categoryImage = image;
+                                    },
+                                    icon: const Icon(
+                                      Icons.upload,
+                                      color: white,
+                                    ),
+                                  ),
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                        20.width(),
+                        Expanded(
+                          child: Column(
+                            children: [
+                              const Text(
+                                "Wallpaper Preview",
+                                style: TextStyle(color: white, fontSize: 18),
+                              ),
+                              10.height(),
+                              GestureDetector(
+                                onTap: () {},
+                                child: Container(
+                                  height: 300,
+                                  alignment: Alignment.center,
+                                  decoration: BoxDecoration(
+                                    color: primaryColor,
+                                    image: state.wallpaperImage == null
+                                        ? null
+                                        : DecorationImage(
+                                            image: AssetImage(state.wallpaperImage!),
+                                          ),
+                                    borderRadius: BorderRadius.circular(15),
+                                  ),
+                                ),
+                              )
+                            ],
+                          ),
+                        )
+                      ],
+                    ),
+
+                    20.height(),
+
+                    //preview
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Text(
+                          "Wallpaper Tags",
+                          style: TextStyle(color: white, fontSize: 18),
+                        ),
+                        10.height(),
+                        Container(
+                          padding: const EdgeInsets.symmetric(horizontal: 10),
+                          height: 30,
+                          alignment: Alignment.centerLeft,
+                          decoration: BoxDecoration(
+                              border: Border.all(color: white), borderRadius: BorderRadius.circular(10)),
+                          child: TextFormField(
+                            onFieldSubmitted: (value) {
+                              if (value.isNotEmpty) {
+                                state.setWallPaperTags(value);
+                              }
+                            },
+                            textInputAction: TextInputAction.done,
+                            style: const TextStyle(color: white),
+                            decoration: const InputDecoration(isDense: true, border: InputBorder.none),
+                          ),
+                        ),
+                        20.height(),
+                        Container(
+                          padding: const EdgeInsets.all(10),
+                          margin: const EdgeInsets.only(bottom: 10),
+                          height: 120,
+                          decoration: BoxDecoration(
+                            border: Border.all(color: state.wallpaperTags.isEmpty ? black : white),
+                            borderRadius: BorderRadius.circular(15),
+                          ),
+                          child: Align(
+                            alignment: Alignment.bottomLeft,
+                            child: Text(
+                              state.categoryName,
+                              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: white),
+                            ),
+                          ),
+                        ),
+                      ],
+                    )
+                  ],
+                ),
+              ),
+              SizedBox(
+                width: MediaQuery.of(context).size.width,
+                child: TextButton(
+                  style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all(white),
+                      shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10.0), side: const BorderSide(color: white)))),
+                  onPressed: () async {
+                    //
+                  },
+                  child: const Text(
+                    'Continue',
+                    style: TextStyle(color: black),
+                  ),
+                ),
+              ),
+              20.height(),
+            ],
+          ),
+        ),
+      );
+    });
+  }
+}
