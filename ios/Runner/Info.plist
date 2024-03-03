@@ -65,5 +65,9 @@
     <string>[YOUR IOS CLIENT ID]</string>
    <!-- End of the Google Sign-in Section -->
 
+   <key>NSPhotoLibraryUsageDescription</key>
+   <string>Please grant permission to use this feature.</string>
+
+
 </dict>
 </plist>

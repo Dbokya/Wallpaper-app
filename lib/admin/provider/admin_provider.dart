@@ -1,4 +1,6 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:wallpaper_app/configs/enums.dart';
 
 abstract class _Admin {
   Future<void> saveWallpaper();
@@ -58,10 +60,26 @@ class AdminProvider extends ChangeNotifier implements _Admin {
 
   List<String> adminActionList = ["Add Category", "Add Wallpaper"];
 
+  final categoryRef = FirebaseFirestore.instance.collection('category');
+  final wallpaperRef = FirebaseFirestore.instance.collection('wallpaper');
+
+  ViewState viewState = ViewState.idle;
+  String message = "";
+
   @override
-  Future<void> saveCategory() {
-    // TODO: implement saveCategory
-    throw UnimplementedError();
+  Future<void> saveCategory() async {
+    viewState = ViewState.busy;
+    _updateState();
+
+    try {} on FirebaseException catch (e) {
+      message = e.code;
+      viewState = ViewState.error;
+      _updateState();
+    } catch (e) {
+      message = e.toString();
+      viewState = ViewState.error;
+      _updateState();
+    }
   }
 
   @override

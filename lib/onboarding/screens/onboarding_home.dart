@@ -5,7 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:wallpaper_app/authentication/provider/auth.dart';
 import 'package:wallpaper_app/configs/extensions.dart';
-import 'package:wallpaper_app/enums/enums.dart';
+import 'package:wallpaper_app/configs/enums.dart';
 import 'package:wallpaper_app/onboarding/provider/state_provider.dart';
 import 'package:wallpaper_app/shared/widgets/busy_overlay.dart';
 import 'package:wallpaper_app/styles/color.dart';

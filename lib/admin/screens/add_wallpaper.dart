@@ -147,6 +147,7 @@ class _AddWallpaperScreenState extends State<AddWallpaperScreen> {
                           decoration: BoxDecoration(
                               border: Border.all(color: white), borderRadius: BorderRadius.circular(10)),
                           child: TextFormField(
+                            readOnly: state.wallpaperTags.length >= 5 ? true : false,
                             onFieldSubmitted: (value) {
                               if (value.isNotEmpty) {
                                 state.setWallPaperTags(value);
@@ -161,19 +162,28 @@ class _AddWallpaperScreenState extends State<AddWallpaperScreen> {
                         Container(
                           padding: const EdgeInsets.all(10),
                           margin: const EdgeInsets.only(bottom: 10),
+                          width: MediaQuery.of(context).size.width,
                           height: 120,
                           decoration: BoxDecoration(
                             border: Border.all(color: state.wallpaperTags.isEmpty ? black : white),
                             borderRadius: BorderRadius.circular(15),
                           ),
-                          child: Align(
-                            alignment: Alignment.bottomLeft,
-                            child: Text(
-                              state.categoryName,
-                              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: white),
+                          child: Wrap(
+                            children: List.generate(
+                              state.wallpaperTags.length,
+                              (index) {
+                                final tag = state.wallpaperTags[index];
+                                return Chip(
+                                  label: Text(tag),
+                                  onDeleted: () {
+                                    state.removeWallPaperTags(tag);
+                                  },
+                                  deleteIcon: const Icon(Icons.clear),
+                                );
+                              },
                             ),
                           ),
-                        ),
+                        )
                       ],
                     )
                   ],
