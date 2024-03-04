@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:wallpaper_app/styles/color.dart';
 
@@ -12,10 +13,10 @@ class WallpaperWidget extends StatelessWidget {
       onTap: onTap,
       child: Container(
         alignment: Alignment.center,
-        decoration: BoxDecoration(color: primaryColor, borderRadius: BorderRadius.circular(15)),
-        child: const Text(
-          "Hello image",
-          style: TextStyle(color: white),
+        decoration: BoxDecoration(
+          color: primaryColor,
+          borderRadius: BorderRadius.circular(15),
+          image: DecorationImage(image: CachedNetworkImageProvider(url), fit: BoxFit.cover),
         ),
       ),
     );

@@ -10,8 +10,12 @@ class EmtpyWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Image.asset('assets/empty.png'),
+          Image.asset(
+            'assets/empty.png',
+            width: MediaQuery.of(context).size.width / 2,
+          ),
           20.height(),
           Text(
             title,

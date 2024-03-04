@@ -26,7 +26,12 @@ final router = GoRouter(
     ),
     GoRoute(
       path: '/view_wallpaper',
-      builder: (context, state) => const ViewWallPaperScreen(),
+      builder: (context, state) {
+        final data = state.extra as Map;
+        return ViewWallPaperScreen(
+          url: data['wallpaper_url'],
+        );
+      },
     ),
     GoRoute(
       path: '/search',

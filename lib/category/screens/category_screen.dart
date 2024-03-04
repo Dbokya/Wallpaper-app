@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
@@ -30,19 +31,20 @@ class _CategoryScreenState extends State<CategoryScreen> {
         show: state.viewState == ViewState.busy,
         child: Scaffold(
           appBar: widget.isAdmin ? AppBar() : null,
-          body: state.categories.isEmpty
+          body: (state.categories.isEmpty && state.viewState == ViewState.success)
               ? const EmtpyWidget(title: 'No Available Categories')
               : Padding(
                   padding: const EdgeInsets.all(10.0),
                   child: ListView(
-                    children: List.generate(20, (index) {
+                    children: List.generate(state.categories.length, (index) {
+                      final category = state.categories[index];
                       return GestureDetector(
                         onTap: () {
                           if (widget.isAdmin) {
                             ///pop and send back category name
                             context.pop(index.toString());
                           } else {
-                            final name = {'category_name': 'category $index'};
+                            final name = {'category_name': category.categoryName};
                             context.push('/view_category', extra: name);
                           }
                         },
@@ -51,14 +53,16 @@ class _CategoryScreenState extends State<CategoryScreen> {
                           margin: const EdgeInsets.only(bottom: 10),
                           height: 120,
                           decoration: BoxDecoration(
+                            image: DecorationImage(
+                                image: CachedNetworkImageProvider(category.categoryImage), fit: BoxFit.cover),
                             color: primaryColor,
                             borderRadius: BorderRadius.circular(15),
                           ),
-                          child: const Align(
+                          child: Align(
                             alignment: Alignment.bottomLeft,
                             child: Text(
-                              "Category",
-                              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: white),
+                              category.categoryName,
+                              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: white),
                             ),
                           ),
                         ),

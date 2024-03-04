@@ -8,7 +8,7 @@ abstract class _Category {
 }
 
 class CategoryProvider extends ChangeNotifier implements _Category {
-  final List<CategoryModel> _categories = [];
+  List<CategoryModel> _categories = [];
   List<CategoryModel> get categories => _categories;
 
   final _categoryRef = FirebaseFirestore.instance.collection('category');
@@ -24,11 +24,15 @@ class CategoryProvider extends ChangeNotifier implements _Category {
     try {
       final result = await _categoryRef.get();
 
+      List<CategoryModel> tempList = [];
+
       if (result.docs.isNotEmpty) {
         for (var i in result.docs) {
-          _categories.add(CategoryModel.fromJson(i.data()));
+          tempList.add(CategoryModel.fromJson(i.data()));
         }
       }
+
+      _categories = tempList;
 
       viewState = ViewState.success;
       _updateState();

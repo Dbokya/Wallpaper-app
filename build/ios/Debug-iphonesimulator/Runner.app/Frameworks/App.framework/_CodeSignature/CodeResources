@@ -10,11 +10,11 @@
 		</data>
 		<key>flutter_assets/AssetManifest.bin</key>
 		<data>
-		ME0cAg6cl/bTZmwXEVgMugDccUI=
+		epkKVwICUK6gqUVZ68sDx8mh8sw=
 		</data>
 		<key>flutter_assets/AssetManifest.json</key>
 		<data>
-		oG5/OGn+vw7vp/nu5DUDoZJ4nFc=
+		Sl5G87QJ8F3PSTjFfac7M7sC+yc=
 		</data>
 		<key>flutter_assets/FontManifest.json</key>
 		<data>
@@ -22,7 +22,11 @@
 		</data>
 		<key>flutter_assets/NOTICES.Z</key>
 		<data>
-		pEWDbnjgHPp4m913DhmiF7rYSsA=
+		X8eRrxiUoPPawiNG7yBjUOjjIcI=
+		</data>
+		<key>flutter_assets/assets/empty.png</key>
+		<data>
+		ooonrXBSYs0eUjgCpXD8N1TiHdk=
 		</data>
 		<key>flutter_assets/fonts/MaterialIcons-Regular.otf</key>
 		<data>
@@ -34,11 +38,35 @@
 		</data>
 		<key>flutter_assets/kernel_blob.bin</key>
 		<data>
-		Ka6hYAtpcaFU8EMTqx6UBlFnWTs=
+		p0zZIqPNJTlHGfPaSosfZ4TdbaU=
 		</data>
 		<key>flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf</key>
 		<data>
 		P7bb/oR3EhwqCIH1M6LyTuBIWYU=
+		</data>
+		<key>flutter_assets/packages/quickalert/assets/confirm.gif</key>
+		<data>
+		7FtJPFXNd04VynPHUWdsiw/6udA=
+		</data>
+		<key>flutter_assets/packages/quickalert/assets/error.gif</key>
+		<data>
+		QEb+sZyXNFwIm+d/MoYjP6Z4T5w=
+		</data>
+		<key>flutter_assets/packages/quickalert/assets/info.gif</key>
+		<data>
+		AHfq6KEFmT3OSFboGVunzX7XM9U=
+		</data>
+		<key>flutter_assets/packages/quickalert/assets/loading.gif</key>
+		<data>
+		D4HhJkGUEmp2bmqNJmodMNyhsaM=
+		</data>
+		<key>flutter_assets/packages/quickalert/assets/success.gif</key>
+		<data>
+		goNyvSALK3B4/nc/x4KDXmDzzW8=
+		</data>
+		<key>flutter_assets/packages/quickalert/assets/warning.gif</key>
+		<data>
+		LQeWyiIUzYLat1n8UThk2mvAeYU=
 		</data>
 		<key>flutter_assets/shaders/ink_sparkle.frag</key>
 		<data>
@@ -55,14 +83,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			AK9VrT1vIYmP534P8JLRoc2lLJQbaGDpko1FyK+MCV0=
+			2e1U6A1YQ2w+pHNNExbLKbJfUUumRkwhmFJicajOT78=
 			</data>
 		</dict>
 		<key>flutter_assets/AssetManifest.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			Sps95+7JukayebvM0TLjL1LW1VXXndpKp/O8tOm9ZR8=
+			j4/9zwlnIwYRxLDXXQp4OzXUMF9mXP04qDCmEXqBGGw=
 			</data>
 		</dict>
 		<key>flutter_assets/FontManifest.json</key>
@@ -76,7 +104,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			Vi8nFoNzGXLH01Nay2Lyee6ENo/yUCgkYpJZFK4YCuc=
+			agb9fUYHkxyA5+YezGzupCjulfRVkW349xhkMY4jwWw=
+			</data>
+		</dict>
+		<key>flutter_assets/assets/empty.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			9Kt4Lezbn+KMMnLvJRV3EOYQbaclTvrBRgcOY2zC6VA=
 			</data>
 		</dict>
 		<key>flutter_assets/fonts/MaterialIcons-Regular.otf</key>
@@ -97,7 +132,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			bn4Oasv8yN0XDZesGcR2n65yd9RHgO+Ci2eaT0k+t28=
+			WiqQeESgqnSa+PWc+nZNHJdb/QX7doEg3lQ9+xfVKvw=
 			</data>
 		</dict>
 		<key>flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf</key>
@@ -105,6 +140,48 @@
 			<key>hash2</key>
 			<data>
 			x6NX+tjyECiQtyzbbjyY8U2zoZ7GDbJtE+T+k/dzgI0=
+			</data>
+		</dict>
+		<key>flutter_assets/packages/quickalert/assets/confirm.gif</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			fxAqZxugMznHPvFU6fy13NYjj4cnu/78rhGCNgaIQV0=
+			</data>
+		</dict>
+		<key>flutter_assets/packages/quickalert/assets/error.gif</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			QSZ4acoGjPIW8koPG6cc4TGDnS4GjOcHFoD8t+sqEKw=
+			</data>
+		</dict>
+		<key>flutter_assets/packages/quickalert/assets/info.gif</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			New5bhpNJya/nHgk0WI8gqf51ZBeN1C5ZT5RjJxNmGU=
+			</data>
+		</dict>
+		<key>flutter_assets/packages/quickalert/assets/loading.gif</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			y4y4VEbYk1E6wMw8h8WYzabZTJRJtWipCbqpZMuiKrI=
+			</data>
+		</dict>
+		<key>flutter_assets/packages/quickalert/assets/success.gif</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			qfV8VFuX/lja5fQlM+Yks++JlushBDiOrSus3gnRS+U=
+			</data>
+		</dict>
+		<key>flutter_assets/packages/quickalert/assets/warning.gif</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			w1oY4v9kqpjupS0F3cHyeTi8XmxFaYQSFVHXhqNhBys=
 			</data>
 		</dict>
 		<key>flutter_assets/shaders/ink_sparkle.frag</key>

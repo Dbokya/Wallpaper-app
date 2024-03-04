@@ -1,9 +1,11 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:wallpaper_app/shared/dialog/apply_bottom_dialog.dart';
 import 'package:wallpaper_app/styles/color.dart';
 
 class ViewWallPaperScreen extends StatefulWidget {
-  const ViewWallPaperScreen({super.key});
+  final String url;
+  const ViewWallPaperScreen({super.key, required this.url});
 
   @override
   State<ViewWallPaperScreen> createState() => _ViewWallPaperScreenState();
@@ -27,9 +29,11 @@ class _ViewWallPaperScreenState extends State<ViewWallPaperScreen> {
       ),
       body: Column(
         children: [
-          const Expanded(
-            child: Icon(Icons.house),
-          ),
+          Expanded(
+              child: CachedNetworkImage(
+            imageUrl: widget.url,
+            fit: BoxFit.cover,
+          )),
           Container(
             margin: const EdgeInsets.all(50),
             child: Row(

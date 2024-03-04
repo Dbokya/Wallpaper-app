@@ -6,6 +6,7 @@ import 'package:wallpaper_app/authentication/provider/auth.dart';
 import 'package:wallpaper_app/category/provider/category_provider.dart';
 import 'package:wallpaper_app/configs/routers.dart';
 import 'package:wallpaper_app/firebase_options.dart';
+import 'package:wallpaper_app/home/provider/home_wallpaper_provider.dart';
 import 'package:wallpaper_app/onboarding/provider/state_provider.dart';
 import 'package:wallpaper_app/search/provider/search_provider.dart';
 import 'package:wallpaper_app/styles/color.dart';
@@ -41,6 +42,9 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           create: (context) => CategoryProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => WallPaperProvider(),
         ),
       ],
       child: MaterialApp.router(
