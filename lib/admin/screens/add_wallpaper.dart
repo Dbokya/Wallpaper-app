@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:wallpaper_app/admin/provider/admin_provider.dart';
+import 'package:wallpaper_app/configs/enums.dart';
 import 'package:wallpaper_app/configs/extensions.dart';
+import 'package:wallpaper_app/shared/dialog/message_dialog.dart';
 import 'package:wallpaper_app/shared/utils/pick_image.dart';
 import 'package:wallpaper_app/styles/color.dart';
 
@@ -197,7 +199,41 @@ class _AddWallpaperScreenState extends State<AddWallpaperScreen> {
                       shape: MaterialStateProperty.all(RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10.0), side: const BorderSide(color: white)))),
                   onPressed: () async {
-                    //
+                    if (state.selectedCategory.isEmpty) {
+                      ///show error message
+                      showMessage(context, "Please select a category");
+                      return;
+                    }
+                    if (state.wallpaperTags.isEmpty) {
+                      //show error message
+                      showMessage(context, "Please add wallpaper tags");
+
+                      return;
+                    }
+
+                    if (state.wallpaperImage == null) {
+                      ///show error message
+                      showMessage(context, "Please select a wallpaper image");
+
+                      return;
+                    }
+
+                    await state.saveWallpaper();
+
+                    if (state.viewState == ViewState.error) {
+                      //show message
+                      if (context.mounted) {
+                        showMessage(context, state.message);
+                      }
+                      return;
+                    }
+                    if (state.viewState == ViewState.success) {
+                      //show message
+                      if (context.mounted) {
+                        showMessage(context, "Wallpaper was successfully saved and available for use",
+                            isError: false);
+                      }
+                    }
                   },
                   child: const Text(
                     'Continue',

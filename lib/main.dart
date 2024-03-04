@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:wallpaper_app/admin/provider/admin_provider.dart';
 import 'package:wallpaper_app/authentication/provider/auth.dart';
+import 'package:wallpaper_app/category/provider/category_provider.dart';
 import 'package:wallpaper_app/configs/routers.dart';
 import 'package:wallpaper_app/firebase_options.dart';
 import 'package:wallpaper_app/onboarding/provider/state_provider.dart';
@@ -37,6 +38,9 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           create: (context) => AdminProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => CategoryProvider(),
         ),
       ],
       child: MaterialApp.router(

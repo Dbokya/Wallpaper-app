@@ -1,0 +1,51 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
+import 'package:wallpaper_app/category/models/category_model.dart';
+import 'package:wallpaper_app/configs/enums.dart';
+
+abstract class _Category {
+  Future<void> fetchCategory();
+}
+
+class CategoryProvider extends ChangeNotifier implements _Category {
+  final List<CategoryModel> _categories = [];
+  List<CategoryModel> get categories => _categories;
+
+  final _categoryRef = FirebaseFirestore.instance.collection('category');
+
+  ViewState viewState = ViewState.idle;
+  String message = "";
+
+  @override
+  Future<void> fetchCategory() async {
+    viewState = ViewState.busy;
+    _updateState();
+
+    try {
+      final result = await _categoryRef.get();
+
+      if (result.docs.isNotEmpty) {
+        for (var i in result.docs) {
+          _categories.add(CategoryModel.fromJson(i.data()));
+        }
+      }
+
+      viewState = ViewState.success;
+      _updateState();
+    } on FirebaseException catch (e) {
+      message = e.code;
+      viewState = ViewState.error;
+      _updateState();
+    } catch (e) {
+      message = e.toString();
+      viewState = ViewState.error;
+      _updateState();
+    }
+  }
+
+  void _updateState() {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      notifyListeners();
+    });
+  }
+}

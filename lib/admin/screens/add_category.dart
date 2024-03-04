@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:wallpaper_app/admin/provider/admin_provider.dart';
 import 'package:wallpaper_app/configs/enums.dart';
 import 'package:wallpaper_app/configs/extensions.dart';
+import 'package:wallpaper_app/shared/dialog/message_dialog.dart';
 import 'package:wallpaper_app/shared/utils/pick_image.dart';
 import 'package:wallpaper_app/shared/widgets/busy_overlay.dart';
 import 'package:wallpaper_app/styles/color.dart';
@@ -138,27 +139,32 @@ class _AddCategoryScreenState extends State<AddCategoryScreen> {
                             borderRadius: BorderRadius.circular(10.0),
                             side: const BorderSide(color: white)))),
                     onPressed: () async {
-                      if(state.categoryName.isEmpty){
+                      if (state.categoryName.isEmpty) {
                         ///show error message
-                        ///
+                        showMessage(context, "Please select a name");
                         return;
                       }
-                      if(state.categoryImage == null){
+                      if (state.categoryImage == null) {
                         //show error message
+                        showMessage(context, "Please select a category image");
                         return;
                       }
 
                       await state.saveCategory();
 
-                      if(state.viewState == ViewState.error){
+                      if (state.viewState == ViewState.error) {
                         //show message
+                        if (context.mounted) {
+                          showMessage(context, state.message);
+                        }
                         return;
                       }
-                      if(state.viewState == ViewState.success){
+                      if (state.viewState == ViewState.success) {
                         //show message
-                        
+                        if (context.mounted) {
+                          showMessage(context, "Category was successfully saved and available for use", isError: false);
+                        }
                       }
-
                     },
                     child: const Text(
                       'Continue',
